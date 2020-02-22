@@ -1,0 +1,90 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/country.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+{% endblock %}
+{% block content %}
+<div id='foreign' style="width: 1200px;height: 600px;">
+    <dl class="dest_detail">
+        <dt>
+            <h2>西南</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:city_yn' %}">云南</a> <strong>|</strong>
+                <a href="{% url 'Travel:city_xzcy' %}">西藏川渝</a><strong>|</strong>
+                <a href="{% url 'Travel:city_gz' %}">贵州</a>
+            </h4>`
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>西北 东北</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:city_db' %}">东北</a> <strong>|</strong>
+                <a href="{% url 'Travel:city_nmhn' %}">内蒙河南</a><strong>|</strong>
+                <a href="{% url 'Travel:city_xb' %}"> 西北</a><br><br>
+                <a href="{% url 'Travel:city_xa' %}">西安</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>华北 华东</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:city_jzhy' %}">江浙沪皖</a> <strong>|</strong>
+                <a href="{% url 'Travel:city_bj' %}">北京 </a><strong>|</strong>
+                <a href="{% url 'Travel:city_sdsx' %}">山东山西</a><br><br>
+                <a href="{% url 'Travel:city_jxfj' %}">江西福建</a>
+            </h4>
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>华中&华南</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:city_sy' %}">三亚 </a><strong>|</strong>
+                <a href="{% url 'Travel:city_hnhb' %}"> 湖南湖北</a><strong>|</strong>
+                <a href="{% url 'Travel:city_gd' %}">广东</a><br><br>
+                <a href="{% url 'Travel:city_gx' %}">广西</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>其他地区</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:city_xgam' %}">香港澳门</a>
+            </h4>
+        </dd>
+    </dl>
+
+</div>
+{% endblock %}

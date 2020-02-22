@@ -1,0 +1,198 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="{% static '/js/detail.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container" style="margin-top: 100px">
+        <div class="row">
+                <h2>{{ detail.title }}</h2>
+                <hr>
+                <div class="col-md-5" style="margin-left: -15px">
+                    <img src="{{ detail.image }}" alt="" style="width: 100%;">
+                </div>
+                <div class="col-md-7" style="">
+                    <form action="{% url 'Travel:add' detail.id %}" method="get" onSubmit="return beforeSubmit(this)">
+                        <p style="float: right;color:#C19136;">
+                            ￥<span style="font-size: 50px;font-family: Gabriola">{{ detail.price }}</span>元/人
+                            <br>
+                            <button type="submit" class="btn btn-danger" style="float: right;width: 120px;">开 始 预 订 ></button>
+                        </p>
+                        <p>出行人数：<input type="number" style="width: 85px" name="travel_count" value="1"> /人</p>
+                        <p>出发城市：<input type="text" style="width: 85px" name="travel_city" id="travel_city" required="required"></p>
+                        <p>出发日期：<input type="date" name="travel_data" required="required"></p>
+                        <p>联系方式：<input type="number" name="travel_number" required="required" maxlength="11"></p>
+                        <p>行程亮点 <span class="glyphicon glyphicon-tree-deciduous" style="color: #C19136"></span></p>
+                    </form>
+                    <p><span class="glyphicon glyphicon-star" style="color: #C19136"></span>&nbsp;{{ detail.name1 }}</p>
+                    <p><span class="glyphicon glyphicon-star" style="color: #C19136"></span>&nbsp;{{ detail.name2 }}</p>
+                    <p><span class="glyphicon glyphicon-star" style="color: #C19136"></span>&nbsp;{{ detail.name3 }}</p>
+                </div>
+            <div id="detail_nav" style="margin-top: 350px;">
+                <div class="" role="navigation" style="background-color: transparent">
+                    <!-- 添加 nav 和 nav-tabs 类到 ul 中 -->
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab">详细行程</a></li>
+                        <li><a href="#tab1" data-toggle="tab">费用说明</a></li>
+                        <li><a href="#tab2" data-toggle="tab">签证信息</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+
+                        <!-- 为标签页设置淡入淡出效果，请添加 .fade 到每个 .tab-pane 后面 -->
+                        <div class="tab-pane fade in active" id="home" style="margin-left: 50px">
+                            <h3>推荐行程</h3>
+                            <p class="title"><strong>自行抵达目的地机场，专车专导接机，入住当地酒店休息</strong></p>
+                            <ul class="detail_ul">
+                                <li>
+                                    <span>餐饮:</span>
+                                    早餐—敬请自理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;午餐—敬请自理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晚餐—酒店晚餐（点餐）
+                                </li>
+                                <li style="margin-top: 10px">
+                                    <span>酒店：</span>
+                                    <a style="color: #B88627;">悦来酒店【嘉宾轩豪华客房 60㎡】</a>
+                                </li>
+                                <li style="margin-top: 10px">
+                                    <span>行程：</span>
+                                    ■今日：自行抵达目的地机场，★专车专导接机（20公里/30分钟），前往当地酒店，入住嘉宾轩豪华大床房休息。
+                                    <br/>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;■晚上：★酒店中餐厅享用晚餐（点餐）。
+                                    <br>
+                                    <br/>
+                                </li>
+                                <li style="margin-top: 10px">
+                                    <b>★悦来酒店：</b>悦来酒店位于长白山国际度假区南区冠冕街，临近目的地国际滑雪场、
+                                    国际大剧院等，可尽情领略雪山壮阔的风景。酒店设计精致，突显空间感，打造出了一个充满北美风情的山野村居。
+                                    实木质感的客房，大气又宁静。冬天，还能看到远处的山峦雪景，民间手艺人家访，专属VIP民间手艺人接待，现场传艺。
+                                    傍晚与民间手艺人一起，
+                                    <br/>★亲手做一餐东北特色菜，共赏
+                                    <br/>★燃放烟花。
+                                    <br/>
+                                    <br/>
+                                    <b>下一站贵宾尊享：</b>
+                                    <br/>
+                                    1）嘉宾轩享用早餐（时间：上午6:30-10:30）；
+                                    <br/>
+                                    <br/>
+                                    2）晚间鸡尾酒（时间：下午5:30-8:00）；
+                                    <br/>
+                                    <br/>
+                                    3）全日畅饮各式饮品（时间：上午6:30 - 晚上11:00）；
+                                    <br/>
+                                    <br/>
+                                    4）快速入住登记及退房服务；
+                                    <br/>
+                                    <br/>
+                                    5）免费享用会议设施（视预订情况）；
+                                </li>
+                            </ul>
+                            <div>
+                                <div class="col-md-3">
+                                    <img src="{% static 'images/11.jpg' %}" style="width: 100%">
+                                    <p>酒店外端</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="{% static 'images/22.jpg' %}" style="width: 100%">
+                                    <p>前台</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="{% static 'images/33.jpg' %}" style="width: 100%">
+                                    <p>凯悦酒店</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="{% static 'images/44.jpg' %}" alt="#" style="width: 100%">
+                                    <p>豪华客房</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab1">
+                            <h3>费用说明</h3>
+                            <h4 style="color: #B88627">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费用包含:</h4>
+                            <hr>
+                            <dd>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.【住宿】长白山凯悦酒店嘉宾轩豪华客房1间3晚住宿（含早）；</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.【用餐】行程中标明的午晚餐共计3次（凯悦酒店晚餐一次、荒野厨房一次、手艺人家宴一次）；</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.【用车】行程首尾两日专属接送机服务、行程第二日第三日行程涉及专属用车服务（车型：丰田霸道）；</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.【导游】全程专属中文导游服务；</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.【门票】行程涉及景点首道门票费用（长白山北景区VIP套票）；</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6【体验】UTV越野卡丁车2小时体验、锦江木屋村手艺人家访（含烟花）；</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.【保险】平安鸿鹄境内高端旅游意外保险豪华款；</p>
+                                <p>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>温馨提示：</strong>
+                                </p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.
+                                    产品报价为两人出行共用一间房的单人价格，如单人出行需支付单房差及套餐差价。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.
+                                    本产品付款成功后不可退改。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.如您为1位成人1位儿童出行，请提交2位成人的费用。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.本产品所用房型无双床房。如您需要双床房，可为您更换房型，具体信息及报价请咨询客服。</p>
+                            </dd>
+                            <hr>
+                            <h4 style="color: #B88627">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费用不包含:</h4>
+                            <dd>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.【机票】国际、国内段往返机票及相关税费;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.【单人差价】贵宾如果单人出行，需支付单房差及套餐差价;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    3.【升级房型】如贵宾需要升级房型，需支付房型差价;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.【延长住宿】贵宾另外延长假期的额外住宿，交通、观光费用;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.【私人消费】行程标示外的饮料酒类、洗衣、电话、网路及私人交通费;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.【超时费】超出行程标示外的用车、司导服务等费用;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.【其他费用】费用包含中未提及的其他费用。如因天灾、战争、罢工等不可抗力的原因，
+                                    及因交通延阻、航班取消或更改时间等特殊情况或其他非我公司原因所产生的额外费用（如在外延期住、食及交通费等），
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我公司有权追加差价。</p>
+                            </dd>
+                            <hr>
+                            <h4 style="color: #B88627">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;预订须知:</h4>
+                            <dd>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.【年龄限制】本产品暂不接受孕妇以及70周岁以上老人报名预订</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.【付款期限】产品确认以后我司将在24小时内通知您收取全款，如旅游者未按要求及时付清相关费用订单自动取消。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    3.【持非中国护照】本产品仅对持中国大陆签发护照或身份证的客人提供代为办理服务。
+                                    若持非中国大陆护照客人预定此产品，鸿鹄逸游仅提供签证外的相关旅游服务并重新核算价格，须由客人自行确认签证信息或自备签证。因签证问题导致的一切行程损失均由客人自行承担。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.【单人报名】本产品价格是按双人共用一间房核算的单人价格。如您为单人出行，需补单间差价及其他可能产生的差价。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.【不可抗力】景点如遇当地假期、关闭日期或罢工、暴动等临时通知关闭的，请以我公司“行前通知”确认为准。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.【安全须知】为了您的安全起见，当您参加有一定危险性的室内或户外活动时，请务必了解当天的天气情况及您个人身体状况是否适宜参加此类项目，下一站游提醒您注意人身安全。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.【行程变更】网上公布行程仅供参考，在出发前或旅行期间，鸿鹄逸游保留因不可抗力（如天气、天灾、战争、罢工等）因素对具体行程进行适当调整的权利。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.【旅行社的违约责任】
+                                    旅行社在出发前提出解除预订须知的，向旅游者退还全额旅游费用。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.【旅游者的违约责任】</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）旅游者在出发前提出解除预订须知的，旅行社在扣除业务损失费后，将余款退还旅游者（在“费用包含”中有特别说明的产品除外）。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）因旅游者个人原因发生未到店、延迟到店、提前离店或提前结束行程的情况，以具体产品的退改条款为准。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）旅游者行程期间因自身原因致使人身、财产权益受到损害的，旅行社不承担赔偿责任，若因此造成旅行社损失的，还应对旅行社承担赔偿责任。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）与旅行社出现纠纷时，旅游者应当积极采取措施防止损失扩大，否则应当就扩大的损失承担责任。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.【保险】本产品内所含保险仅针对从中国大陆出发及持中国大陆签发护照的旅客。若客人选择境外参团，或持非中国大陆护照，预订此产品鸿鹄无法代为投保，建议您自行购买保险。
+                                    如因客人放弃投保而&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;产生的风险和损失将由客人自行承担。</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11【补充条款】此产品为特惠套餐，一经预定成功后，不可取消或更改。</p>
+                            </dd>
+                            <hr>
+                            <hr>
+                            <div>
+                                <img src="{% static 'images/ppp.png' %}" width="100%">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab2">
+                            <div style="border: 1px solid #F1F1F1;margin-top: 30px">
+                                <h3>签证信息</h3><br>
+                                <p>很抱歉，当前产品暂时没有签证信息。</p>
+                            </div>
+                            <hr>
+                            <div>
+                                <img src="{% static 'images/ppp.png' %}" width="100%">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab3">
+                            <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic
+                                等）的
+                                J2EE
+                                上。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

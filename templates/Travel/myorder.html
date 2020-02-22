@@ -1,0 +1,91 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/myorder.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="container" id="myorder" style="margin-top: 100px;background-color: white">
+    <div>
+        <h2>我的预约</h2>
+    </div>
+    <hr>
+    {% for cart in carts %}
+        <div class="row" id="{{ cart.id }}" style="margin-bottom: 100px;padding-left: 150px;padding-right: 150px">
+            <div class="col-md-9">
+                <p>预约项目：<a href="{% url 'Travel:detail' cart.goods.id %}">{{ cart.goods.title }}</a></p>
+                <p>出发日期：<a href="{% url 'Travel:detail' cart.goods.id %}">{{ cart.travel_data }}</a></p>
+                <p>联系方式：<a href="{% url 'Travel:detail' cart.goods.id %}">{{ cart.travel_number }}</a></p>
+                <p>出行人数：<a href="{% url 'Travel:detail' cart.goods.id %}">{{ cart.travel_count }}</a>人</p>
+                <p style="padding-left: 88px;color: red;font-size: 16px">￥{{ cart.goods.price }}元/人</p>
+                <div style="float: right">
+                    <a href="{% url 'Travel:compile' cart.id %}"><span class="glyphicon glyphicon-edit "></span></a>
+                    <a href="{% url 'Travel:delete' cart.id %}"><span
+                            class="glyphicon glyphicon-remove-sign "></span></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="{% url 'Travel:detail' cart.goods.id %}"><img src="{{ cart.goods.image }}" alt=""
+                                                                       style="width: 100%"></a>
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    <div style="float: right;">
+        <p>共计<b name="money"> <span style="color: red">{{ num }}</span> </b>个预约</p>
+        <p>合计：¥<span style="color: red;font-family: Gabriola;font-size: 30px">{{ prices }}</span>元</p>
+        <p style="color:#C19136;"><a type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                                     style="width: 120px;">去结算 ></a></p>
+    </div>
+
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:500px">
+                <div style="margin: 30px">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#Alipay" data-toggle="pill">支付宝</a></li>
+                        <li><a href="#WeChat" data-toggle="pill">微信</a></li>
+                        <li><a href="#BankCard" data-toggle="pill">银行卡</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="Alipay">
+                            <p>扫一扫支付</p>
+                            <p style="font-size: 20px;color: red">{{ prices }}.00</p>
+                            <img src="{% static 'images/Alipay2.png' %}" alt="">
+                        </div>
+                        <div class="tab-pane fade" id="WeChat">
+                            <p>扫一扫支付</p>
+                            <p style="font-size: 20px;color: red">{{ prices }}.00</p>
+                            <img src="{% static 'images/WeChat.png' %}" alt="">
+                        </div>
+                        <div class="tab-pane fade" id="BankCard">
+                            <p>银联支付</p>
+                            <p style="font-size: 20px;color: red">{{ prices }}.00</p>
+                            <img src="{% static 'images/BankCard.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- /.modal -->
+        {#    <script>#}
+        {#        $(function () {#}
+        {#            $('#myModal').modal('hide')#}
+        {#        });#}
+        {#    </script>#}
+        {#    <script>#}
+        {#        $(function () {#}
+        {#            $('#myModal').on('hide.bs.modal',#}
+        {#                function () {#}
+        {#                    alert('嘿，我听说您喜欢模态框...');#}
+        {#                })#}
+        {#        });#}
+        {#    </script>#}
+
+</div>
+{% endblock %}

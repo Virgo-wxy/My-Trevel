@@ -1,0 +1,21 @@
+        body {
+            background-image: url("../images/body_bg.png");
+        }
+
+        .row {
+            background-color: white;
+            margin-top: 30px;
+            padding: 15px;
+            padding: 40px;
+        }
+        #detail_nav a{
+            color: #D9534F;
+            font-style: revert;
+        }
+        #detail_nav a:hover{
+            background: #D9534F;
+            color: white;
+        }
+        #myTabContent{
+            border: transparent;
+        }

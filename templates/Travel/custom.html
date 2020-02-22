@@ -1,0 +1,151 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{% static '/js/custom.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container_background">
+        <div class="container_box1">
+            <p class="sirendingzhi_title" style="text-align: center">高端定制需求单</p>
+            <div class="cfix1 crm_box1">
+                <div class="crm_main1">
+                    <!--说明-->
+                    <div class="private_header">
+                        <div>专业行程规划，随心旅游享受。高端定制体验，尽在下一站高端定制！</div>
+                        <div>欢迎填写高端定制单，我们将在1小时内与您联系（服务时间：每日9:00-22:00）</div>
+                    </div>
+                    <!--表单-->
+                    <form id="form" action="{% url 'Travel:custom_add' %}" method="post"
+                          onSubmit="return custom(this)">
+                        <div class="personalCus_content_title">
+                            <i class="icon_personalCus write"></i>
+                            您的需求<span>(必填)</span>
+                        </div>
+                        <div class="personalCus_form_box">
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">出发城市</span>
+                                <input type="text" placeholder="请输入您的出发地" name="cf_city" required="required">
+                            </div>
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">目的地</span>
+                                <input type="text" placeholder="请输入您的目的地" name="dd_city" required="required">
+                            </div>
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">出发时间</span>
+                                <input type="date" name="cf_date" required="required">
+                            </div>
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">旅行天数</span>
+                                <div class="personalCus_inputWrap">
+                                    <input class="duration" maxlength="3" type="number" placeholder="请输入"
+                                           name="travel_days" required="required">
+                                    <span style="margin: 10px">天</span>
+                                </div>
+                            </div>
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">出行人数</span>
+                                <div class="personalCus_inputWrap">
+                                    <span style="margin-right: 10px">成人：</span>
+                                    <input class="duration" maxlength="2" type="number" style="margin-right: 10px"
+                                           placeholder="请输入" name="travel_adult" required="required">
+                                    <span style="margin:0 10px 0 20px">儿童：</span>
+                                    <input class="duration" maxlength="2" type="number" style="margin: 0 10px 0 20px"
+                                           placeholder="请输入" name="travel_children" value="0" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personalCus_content_title">
+                            <i class="icon_personalCus person"></i>
+                            联系人<span>(必填)</span>
+                        </div>
+                        <div class="personalCus_form_box">
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">您的称呼</span>
+                                <div class="personalCus_inputWrap">
+                                    <input class="name" type="text" placeholder="方便客服与您联系" name="name"
+                                           required="required">
+                                </div>
+                            </div>
+                            <div class="personalCus_line1">
+                                <span class="personalCus_line_title">联系电话</span>
+                                <div class="personalCus_inputWrap">
+                                    <select style="height: 30px">
+                                        <option>(中国)+86</option>
+                                        <option>(台湾)+886</option>
+                                        <option>(美国)+1</option>
+                                        <option>(香港)+852</option>
+                                        <option>(韩国)+82</option>
+                                        <option>(日本)+81</option>
+                                        <option>(印度)+91</option>
+                                        <option>(越南)+84</option>
+                                        <option>(新加坡)+65</option>
+                                        <option>(法国)+33</option>
+                                    </select>
+                                    <input class="tel" placeholder="方便客服与您联系" value type="text" name="number"
+                                           required="required">
+                                    <select style="height: 30px">
+                                        <option>随时可拨打</option>
+                                        <option>09:00-12:00</option>
+                                        <option>12:00-14:00</option>
+                                        <option>14:00-18:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="personalCus_content_title">
+                            <i class="xuqiubeizhu"></i>
+                            需求备注
+                            <span>(非必填)</span>
+                        </div>
+                        <div class="personalCus_form_box">
+                            <div class="personalCus_line2">
+                                <span class="personalCus_remark_title">需求备注</span>
+                                <textarea class="remark" cols="20" placeholder="您还有什么特殊要求？" rows="2"
+                                          style="padding-top: 10px; margin-left: 0px;margin-bottom: 0px;"
+                                          name="content"></textarea>
+                            </div>
+                            <div class="personalCus_line1">
+                                <button type="submit" class="btn btn-danger" style="width: 60px;margin-left: 180px;border: transparent;text-align: right;background-color: firebrick">
+                                    开&nbsp;&nbsp;始
+                                </button>
+                                <a  class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                                   style="width: 60px;margin-left: -14px;border: transparent;text-align: left;background-color: firebrick">定&nbsp;&nbsp;制</a>
+{#                                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModal"#}
+{#                                   style="width: 120px;margin-left: 130px">开始定制</button>#}
+                            </div>
+                            {#                            模态框#}
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="background-color: white">
+                                        <div class="modal-body" style="padding: 20px">
+                                            <img src="{% static 'images/timg.gif' %}" alt="" width="45%">
+                                            <div style="width: 50%;float: right;color: #ec971f">
+                                                <h3>亲爱的{{ uname }}！</h3>
+                                                <p>您的高端定制已成功提交~</p>
+                                                <p>"下一站"客服小姐姐将根据您所定制的内容做好相关旅游路线并在一个小时内跟您联系~</p>
+                                                <p>谢谢您对"下一站"的支持~</p>
+                                                <p>客服专线：400-690-2323</p>
+                                            </div>
+                                        </div>
+                                        <div style="margin-bottom: 20px">
+                                            <button type="submit" class="btn btn-warning" data-dismiss="modal"
+                                                    style="margin-left: 500px">朕知道了
+                                            </button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal -->
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

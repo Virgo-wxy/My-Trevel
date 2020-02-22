@@ -1,0 +1,26 @@
+{% extends 'Travel/manage/manage_base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container" style="background-color: white;margin-top: 10px">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th style="font-size: 16px">序号</th>
+                <th style="font-size: 16px">用户名</th>
+                <th style="font-size: 16px">预约订单</th>
+                <th style="font-size: 16px">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for foo in look %}
+                <tr>
+                    <td style="width: 200px">{{ foo.id }}</td>
+                    <td style="width: 200px">{{ foo.user.username }}</td>
+                    <td>{{ foo.goods.title }}</td>
+                    <td style="width: 100px;"><a href="{% url 'Travel:del_look' foo.id %}" style="color: red">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

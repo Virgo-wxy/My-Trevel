@@ -1,0 +1,55 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/introduce.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="a">
+        <div class="a1">
+            <br/><br/>
+            <img src="{% static 'images/logo3.png' %}">
+            <br/><br/>
+            <p class="w">下一站是携程旗下高端奢游品牌。</p>
+            <p>&ensp; 作为中国高端旅行行业的领军品牌，自2012年成立以来，始终受到广大中国高净值人群的青睐。 </p>
+            <p>我们的旅行目的地已覆盖南北极在内的七大洲诸多优质乃至限量景点。无论你选择结伴出行或私人定
+                <br/><br/>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;制，我们的专业团队定能为您提供与众不同的奢华旅行体验。</p>
+        </div>
+
+        <div class="a2">
+            <br/><br/>
+            <h2>服务规格</h2>
+            <br/>
+            <img src="{% static 'images/t1.png' %}">
+        </div>
+
+        <div class="a3">
+            <br/><br/>
+            <h2>合作伙伴</h2>
+            <br/>
+            <img src="{% static 'images/t2.png' %}">
+        </div>
+
+        <div class="a3">
+            <br/><br/>
+            <h2>联系我们</h2>
+            <h3></h3>
+            <h4><span class="	glyphicon glyphicon-earphone">
+                </span>&nbsp;服务电话   :  400-690-2323
+            </h4>
+            <h4>商务合作   :  marketing@hhtravel.com</h4>
+            <img src="{% static 'images/t3.png' %}">
+            <br><br>
+
+            <h4 style="padding-left: 930px;font-family: Yu Gothic Light;">
+                <span class="glyphicon glyphicon-pencil"></span>
+                &nbsp;&nbsp;
+                <a href="{% url 'Travel:show_guestbook' %}" style="color: #d58512;text-decoration: none">
+                    <strong>我要留言</strong>
+                    <br>
+                    -------------------
+                </a>
+            </h4>
+        </div>
+    </div>
+{% endblock %}

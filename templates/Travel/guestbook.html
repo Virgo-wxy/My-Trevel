@@ -1,0 +1,29 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/guestbook.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container" style="padding: 40px">
+        {% for foo in guestbooks %}
+            <p style="color: #FFB31A"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{{ foo.user.username }}</p>
+            <a style="float: right;text-decoration: none">
+                <form action="{% url 'Travel:answer_guestbook' foo.id %}" method="post">
+                    <textarea name="answer"></textarea>
+                    <button type="submit" class="btn" id="btn1" style="width: 50px;border: transparent">回复</button>
+
+{#                    <input type="submit" name="submit" value="回复" style="background-color: #ec971f;color: white"/>#}
+                </form>
+            </a>
+            <p style="padding-left: 80px"><span>[随意吐槽]</span> {{ foo.title }}</p>
+            <p style="padding-left: 80px">{{ foo.content }}</p>
+            <br>
+            <hr>
+        {% endfor %}
+            <form action="{% url 'Travel:ask_guestbook' %}" method="post">
+                <p style="margin-left: 70px"><textarea name="title" placeholder="来说几句吧...." style="width: 950px;height: 100px;"></textarea></p>
+                <button type="submit" class="btn" id="btn1">我要留言</button>
+            </form>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+.registat {
+    width: 400px;
+    margin-top: 100px;
+    margin-left: 250px;
+    background-color: whitesmoke;
+    opacity: 0.5;
+}
+
+.reg_title {
+    width: 360px;
+    height: 50px;
+}
+
+.reg_title h1 {
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    color: #2aabd2;
+    text-align: center;
+}
+
+.reg_form {
+    width: 400px;
+    margin: 20px 0 0 0px;
+    border: 1px solid transparent;
+    padding-left: 22px;
+}
+
+.reg_form form ul li {
+    height: 70px;
+}
+
+.reg_form li.agree input {
+    width: 15px;
+    height: 15px;
+    margin-top: 13px;
+    margin-left: 12px;
+}
+
+.reg_form li.agree label {
+    width: 300px;
+    margin-left: 10px;
+}
+
+.reg_form li label {
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    font-size: 15px;
+    color: black;
+}
+
+.reg_form li input {
+    width: 288px;
+    height: 38px;
+    border: 1px solid #e0e0e0;
+    float: left;
+    text-indent: 10px;
+    background-color: transparent;
+}
+
+.reg_form li.reg_sub input {
+    width: 360px;
+    height: 40px;
+    background-color: #2aabd2;
+    font-size: 18px;
+    color: white;
+    font-family: 'Microsoft Yahei';
+}
+
+.reg_form li span {
+    float: left;
+    color: #e62e2e;
+    display: none;
+}
+
+body {
+    background-image: url("../images/background2.jpg");
+    background-size: 100%;
+}

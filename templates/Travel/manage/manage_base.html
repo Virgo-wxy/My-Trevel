@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下一站后台管理</title>
+    <link rel="shortcut icon" href="{% static 'images/index.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/manage.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/manage.css' %}">
+    {% block css %}
+    <style>
+        .menu-item a{
+           text-decoration: none;
+            color: #AAB1B7;
+        }
+        .menu-item a:hover{
+            color: #38C6DA;
+        }
+    </style>
+    {% endblock %}
+
+</head>
+<body>
+<div class="wrap">
+    <!-- 左边内容 -->
+    <div id="left" class="left">
+        <div id="logoDiv" class="logoDiv">
+            <p id="logoTitle" class="logoTitle">
+                <img src="{% static 'images/index.png' %}" alt="">
+                <span style="font-size:16px;">账号：{{ username }}</span>
+            </p>
+        </div>
+        <div class="menu-title">用户管理</div>
+        <div class="menu-item">
+            <a href="{% url 'Travel:add_user' %}">－添加用户信息</a>
+        </div>
+        <div class="menu-item">
+            <a href="{% url 'Travel:show_user'  %}">－删除用户信息</a>
+        </div>
+        <div class="menu-title">旅游管理</div>
+        <div class="menu-item">
+            <a href="{% url 'Travel:show_citys' %}">－更新旅游信息</a>
+        </div>
+        <div class="menu-title">订单管理</div>
+        <div class="menu-item">
+            <a href="{% url 'Travel:look_user' %}">－查看订单详情</a>
+        </div>
+        <div class="menu-title">留言管理</div>
+        <div class="menu-item">
+            <a href="{% url 'Travel:look_message' %}">－更新留言信息</a>
+        </div>
+
+    </div>
+    <!-- 右边内容 -->
+    <div id="right" class="tab-content right">
+        <div class="row" style="background-color: white;height: 70px;">
+            <div class="col-md-9">
+                <p style="font-size: 22px;margin-left: 30px;padding-top: 15px">
+                    <strong>下一站旅游网站管理平台</strong>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p style="font-size: 16px;padding-top: 25px">
+                    你好！{{ username }}&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'Travel:index' %}" style="color: #38C6DA">退出</a>
+                </p>
+            </div>
+        </div>
+
+        <div>
+        {% block content %}
+         {% endblock %}
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/myorder.css' %}">
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="{% static '/js/detail.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div id="myorder" style="width: 600px;height: 380px;margin-left: 400px;margin-top:200px;background-image: url('{% static "images/compile.jpg"%}');padding: 30px">
+        <form action="{% url 'Travel:compile' gid.id %}" method="post" onSubmit="return beforeSubmit(this)">
+            <h2>修改预约</h2>
+            <hr>
+            <div style="margin-left: 80px">
+                <p>出行人数：<input type="number" style="width: 85px" name="travel_count" value="{{ gid.travel_count }}"> /人</p>
+                <br>
+                <p>出发城市：<input type="text" style="width: 85px" name="travel_city" value="{{ gid.travel_city }}"></p>
+                <br>
+                <p>出发日期：<input type="date" name="travel_data" value="{{ gid.travel_data }}"></p>
+                <br>
+                <p>联系方式：<input type="text" name="travel_number" value="{{ gid.travel_number }}" style="width: 150px"></p>
+
+                <p style="color:#C19136;" >
+                    <button type="submit" class="btn btn-danger" style="width: 80px;">确认修改</button>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+

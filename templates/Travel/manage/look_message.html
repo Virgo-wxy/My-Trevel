@@ -1,0 +1,26 @@
+{% extends 'Travel/manage/manage_base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container" style="background-color: white;margin-top: 10px">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th style="font-size: 16px">序号</th>
+                <th style="font-size: 16px;">留言</th>
+                <th style="font-size: 16px;text-align: center">回复</th>
+                <th style="font-size: 16px">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+    {% for foo in message %}
+                <tr>
+                    <td style="width: 150px">{{ foo.id }}</td>
+                    <td style="width: 250px;padding: 15px">{{ foo.title }}</td>
+                    <td style="width: 550px;padding: 15px">{{ foo.content }}</td>
+                    <td style="width: 100px;padding: 15px"><a href="{% url 'Travel:del_message' foo.id %}" style="color: red">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

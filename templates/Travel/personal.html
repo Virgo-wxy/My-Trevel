@@ -1,0 +1,62 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/manage.css' %}">
+{% endblock %}
+{% block js %}
+        <script type="text/javascript" src="{% static '/js/manage.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 100px">
+    <div class="wrap">
+        <!-- 左边内容 -->
+        <div id="left" class="left">
+            <div id="logoDiv" class="logoDiv">
+                <p id="logoTitle" class="logoTitle">
+                    <img id="logo" alt="左右布局" src="{% static 'images/index.png' %}"
+                         style="height: 28px; padding-right: 5px;vertical-align: middle;">
+                    <span style="font-size:18px;">个人中心！</span>
+                </p>
+            </div>
+            <div class="menu-item" href="#one" data-toggle="tab">
+                －我的预约
+            </div>
+            <div class="menu-item" href="#two" data-toggle="tab">
+                －我的足迹
+            </div>
+            <div class="menu-item" href="#three" data-toggle="tab">
+                －我的收藏
+            </div>
+            <div class="menu-item" href="#four" data-toggle="tab">
+                －修改密码
+            </div>
+        </div>
+        <!-- 右边内容 -->
+        <div id="right" class="tab-content right">
+            <div id="one" class="tab-pane active">
+                  {% for foo in carts %}
+                      <li>{{ foo.id }}</li>
+                      <li>{{ foo.travel_data }}</li>
+                  {% endfor %}
+            </div>
+            <div id="two" class="tab-pane">
+                             <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
+                                   内容二
+                            </span>
+            </div>
+            <div id="three" class="tab-pane">
+                             <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
+                                   内容三
+                            </span>
+            </div>
+            <div id="four" class="tab-pane">
+                {% for foo in carts %}
+                      <li>{{ foo.user.username }}</li>
+                      <li>{{ foo.user.password}}</li>
+                  {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

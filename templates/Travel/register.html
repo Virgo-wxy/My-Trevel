@@ -1,0 +1,127 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}">
+    <script src="{% static '/js/jquery.js/' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            //注册和登录页面功能
+            $("#user_name").blur(function () {
+                var regUsn = /^[a-zA-Z]\w{2,14}$/g;
+                content = $(this).val();
+                if (content == "") {
+                    $(this).next("span").text("用户名不能为空");
+                    $(this).next("span").css("display","block");
+                } else {
+                    if (!regUsn.test(content)) {
+                        $(this).next("span").text("3到15个英文、数字或下划线，必须字母开头！");
+                        $(this).next("span").css("display","block");
+                    } else {
+                        $(this).next("span").css("display","none");
+                    }
+                }
+            });
+            $("#pwd").blur(function () {
+                var regUsn = /^[a-zA-Z0-9]{6,15}$/g;
+                content = $(this).val();
+                if (content == "") {
+                    $(this).next("span").text("密码不能为空");
+                    $(this).next("span").css("display","block");
+                } else {
+                    if (!regUsn.test(content)) {
+                        $(this).next("span").text("密码必须是6到15位数字或字母组成！");
+                        $(this).next("span").css("display","block");
+                    } else {
+                        $(this).next("span").css("display","none");
+                    }
+                }
+            });
+            $("#cpwd").blur(function () {
+                pwd = $("#pwd").val();
+                cpwd = $(this).val();
+                if (pwd != cpwd) {
+                    $(this).next("span").text("两次输入密码不一致！");
+                    $(this).next("span").css("display","block");
+                } else {
+                    $(this).next("span").css("display","none");
+                }
+            });
+            $("#email").blur(function () {
+                var regUsn = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9]{2,6}$/g;
+                content = $(this).val();
+                if (content == "") {
+                    $(this).next("span").text("email不能为空");
+                    $(this).next("span").css("display","block");
+                } else {
+                    if (!regUsn.test(content)) {
+                        $(this).next("span").text("你输入的邮箱格式不正确！");
+                        $(this).next("span").css("display","block");
+                    } else {
+                        $(this).next("span").css("display","none");
+                    }
+                }
+            });
+            $("#allow").click(function () {
+                var checked = $(this).is(":checked");
+                if (checked == false) {
+                    $(this).next().next("span").text("请勾选同意！");
+                    $(this).next().next("span").css("display", "block");
+                } else {
+                    $(this).next().next("span").css("display", "none");
+                }
+            });
+
+
+        })
+
+    </script>
+</head>
+
+<body>
+<div class="registat">
+    <div class="reg_form">
+        <div class="reg_title" >
+            <h1>注册</h1>
+        </div>
+        <br>
+        <form method="post" action="{% url 'Travel:register' %}">
+            {% csrf_token %}
+            <ul>
+                <li>
+                    <label>用户账号: </label>
+                    <input type="text" name="user_name" id="user_name">
+                    <span>提示信息</span>
+                </li>
+                <li>
+                    <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码: </label>
+                    <input type="password" name="pwd" id="pwd">
+                    <span>提示信息</span>
+                </li>
+                <li>
+                    <label>确认密码:</label>
+                    <input type="password" name="cpwd" id="cpwd">
+                    <span>提示信息</span>
+                </li>
+                <li>
+                    <label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
+                    <input type="email" name="email" id="email">
+                    <span>提示信息</span>
+                </li>
+                <li class="agree">
+                    <input type="checkbox" name="allow" id="allow" checked="checked">
+                    <label>同意旅游用户协议</label>
+                    <span>提示信息</span>
+                </li>
+                <li class="reg_sub">
+                    <input type="submit" value="注册" name="mysubmit" id="sub">
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+</body>
+</html>

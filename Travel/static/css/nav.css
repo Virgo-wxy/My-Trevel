@@ -1,0 +1,47 @@
+               .nav a {
+            text-decoration: none;
+            float: left;
+            color: black;
+            font-size: 18px;
+        }
+
+
+            .nav {
+                background-color: white;
+                padding-left: 30px;
+            }
+
+            .nav li > a {
+                margin-left: 20px;
+            }
+
+            .nav_2 > a {
+                margin-top: 13px;
+                margin-left: 250px;
+                font-size: 16px;
+                text-decoration: none
+            }
+
+            nav {
+                padding-left: 100px;
+            }
+
+            .nav_2 > a:hover {
+                color: #d58512;
+            }
+
+            .nav_1 a {
+                text-decoration: none
+            }
+
+            .nav_1 li a:hover {
+                color: #d58512;
+            }
+
+            span {
+                color: chocolate;
+            }
+
+            .footer a {
+                margin-left: 30px;
+            }

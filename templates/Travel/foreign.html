@@ -1,0 +1,165 @@
+{% extends 'Travel/index.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/country.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+{% endblock %}
+{% block content %}
+<div id='foreign' style="width: 1200px;height: 600px;">
+    <dl class="dest_detail">
+        <dt>
+            <h2>欧洲</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_uk' %}">英国爱尔兰 </a><strong>|</strong>
+                <a href="{% url 'Travel:country_france' %}">法国意大利</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>非洲</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_southafrican' %}">南非</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>东南亚  南亚</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_thai' %}">泰国</a><strong>|</strong>
+                <a href="{% url 'Travel:country_singapore' %}">新加坡</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>环游世界</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_roundtheworld' %}">孝亲28天</a><strong>|</strong>
+                <a href="{% url 'Travel:country_roundtheworld' %}">为爱22天</a><br><br>
+                <a href="{% url 'Travel:country_roundtheworld' %}">亲子20天</a><strong>|</strong>
+                <a href="{% url 'Travel:country_roundtheworld' %}">四季私人飞机20天</a>
+            </h4>
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>美洲</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+
+            <h4>
+                <a href="{% url 'Travel:country_usa' %}">美国</a><strong>|</strong>
+                <a href="{% url 'Travel:country_hawaiyi' %}">夏威夷</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>中东</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_dubai' %}">迪拜</a><strong>|</strong>
+                <a href="{% url 'Travel:country_egypt' %}">埃及</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>东北亚</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_tokyo' %}">东京&富士山</a><strong>|</strong>
+                <a href="{% url 'Travel:country_japan' %}">日本</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>邮轮 极地</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_south' %}">南极</a><strong>|</strong>
+                <a href="{% url 'Travel:country_north' %}">北极</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>澳新</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_australia' %}">澳大利亚</a><strong>|</strong>
+                <a href="{% url 'Travel:country_newzealand' %}">新西兰</a>
+            </h4>
+
+        </dd>
+    </dl>
+    <dl class="dest_detail">
+        <dt>
+            <h2>岛屿</h2>
+        </dt>
+        <h2>
+            <hr>
+        </h2>
+        <dd>
+            <h4>
+                <a href="{% url 'Travel:country_maldivees' %}">马尔代夫</a><strong>|</strong>
+                <a href="{% url 'Travel:country_fiji' %}">斐济</a>
+            </h4>
+        </dd>
+    </dl>
+
+
+
+</div>
+{% endblock %}

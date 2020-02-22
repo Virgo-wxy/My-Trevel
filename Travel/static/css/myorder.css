@@ -1,0 +1,17 @@
+        #myorder a {
+            padding-left: 20px;
+        }
+        li a{
+            /*margin-left: 50px;*/
+
+        }
+        .tab-pane{
+            margin-top: 30px;
+            margin-left: 130px;
+        }
+        .tab-pane p{
+            padding-left: 60px;
+        }
+        body {
+            background-image: url("../images/body_bg.png");
+        }
